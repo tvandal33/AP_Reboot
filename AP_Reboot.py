@@ -25,14 +25,15 @@ power_inline = connection.send_command("show power inline", use_textfsm=True)
 for intf in power_inline:
     if intf['device'] == 'C9120AXI-B':
         AP_LIST.append(intf['interface'])
-print(AP_LIST)
-
-shutdown_cmds = []
-noshutdown_cmds = []
 
 if AP_LIST == []:
     print("No APs found to reboot.")
     exit()
+else:
+    print(AP_LIST)
+
+shutdown_cmds = []
+noshutdown_cmds = []
 
 #Disable AP Switch Ports
 print(f"Disabling{AP_LIST}...")
